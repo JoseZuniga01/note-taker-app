@@ -1,7 +1,8 @@
 var router = require('express').Router();
 var save = require('../db/save');
 
-// GET 
+// API routing: 
+//Should read the DB file and return all the saved notes as json 
 router.get('/notes', (req, res) => {
     save
         .getNotes()
@@ -9,7 +10,7 @@ router.get('/notes', (req, res) => {
         .catch(err => res.status(500).json(err));
 });
 
-// POST 
+// receive new note to be saved to DB 
 router.post('/notes', (req, res) => {
     save
         .addNote(req.body)
@@ -17,7 +18,7 @@ router.post('/notes', (req, res) => {
         .catch(err => res.status(500).json(err));
 });
 
-//DELETE 
+//Finds notes by ID and deletes objects based on matching index 
 router.delete('/notes/:id', function (req, res) {
     save
         .deleteNote(req.params.id)

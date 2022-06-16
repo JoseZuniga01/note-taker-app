@@ -1,7 +1,7 @@
 var path = require('path');
 var router = require('express').Router();
 
-//notes.html function
+//HTML routing 
 router.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/notes.html'))
 })

@@ -1,19 +1,18 @@
+//dependencies 
 var express = require('express');
 var app = express();
 var path = require('path');
 var fs = require("fs");
 
-// Routes
+// required routes 
 var apiRoutes = require('./routes/apiRoutes');
 var htmlRoutes = require('./routes/htmlRoutes');
 
 // PORT
-var PORT = process.env.PORT || 5500;
+var PORT = process.env.PORT || 8000;
 
 // Parse data
 app.use(express.urlencoded({ extended: true }));
-
-// Parse data
 app.use(express.json());
 
 
@@ -22,7 +21,7 @@ app.use('/api', apiRoutes);
 app.use('/', htmlRoutes);
 
 
-// Listener
+// starts server to begin listening 
 app.listen(PORT, function () {
     console.log(`API is ready on ${PORT}!`);
 });
